@@ -1,26 +1,104 @@
+@config "../tailwind.config.ts";
 @import "tailwindcss";
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Primary – burnt orange */
+    --primary: #c46a3a;
+    --primary-dark: #9f532d;
+    --primary-light: #e1a07a;
+
+    /* Secondary – warm espresso */
+    --secondary: #1a120e;
+    --secondary-dark: #0f0a08;
+    --secondary-light: #2b1e18;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-white text-gray-900;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary-dark text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+  }
+
+  .heading-1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-primary-dark leading-tight;
+  }
+
+  .heading-2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark;
+  }
+
+  .heading-3 {
+    @apply text-2xl md:text-3xl font-bold text-primary;
+  }
+}
+
+.strip-card {
+  position: relative;
+  width: 128px;
+  aspect-ratio: 1 / 3.2;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: white;
+  transform: translateX(var(--x-mobile)) rotate(var(--rot));
+}
+
+@media (min-width: 640px) {
+  .strip-card {
+    width: 170px;
+  }
+}
+
+@media (min-width: 768px) {
+  .strip-card {
+    width: 185px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .strip-card {
+    transform: translateX(var(--x-desktop)) rotate(var(--rot));
+  }
+}
+
+@keyframes strip-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(42px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-strip-rise {
+  animation: strip-rise 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
