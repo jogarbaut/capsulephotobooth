@@ -61,7 +61,7 @@ export default function Hero() {
           </div>
 
           {/* Right Content - Interactive Demo */}
-          <div className="relative">
+          <div className="relative overflow-hidden">
             <PhotoStripFan />
           </div>
         </div>
