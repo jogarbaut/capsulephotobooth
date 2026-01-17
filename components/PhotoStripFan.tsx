@@ -42,24 +42,26 @@ const STRIPS: Strip[] = [
 
 export default function PhotoStripFan() {
   return (
-    <div className="w-full">
-      {/* No overflow to prevent scrollbars */}
-      <div className="flex justify-center overflow-hidden">
-        <div className="flex items-end">
+    // Hard clamp to viewport width
+    <div className="w-full max-w-screen overflow-hidden">
+      <div className="flex justify-center">
+        {/* 
+          Scale down slightly on phones so total width never exceeds viewport.
+          Scale returns to 1 at sm+
+        */}
+        <div className="flex items-end scale-[0.9] sm:scale-100">
           {STRIPS.map((strip, idx) => (
             <div
               key={strip.src}
               className={[
-                idx === 0 ? "" : "-ml-4 sm:-ml-6", // subtle overlap
+                idx === 0 ? "" : "-ml-4 sm:-ml-6",
                 "animate-strip-rise motion-reduce:animate-none",
               ].join(" ")}
               style={{ animationDelay: `${strip.delayMs}ms` }}
             >
               <div
                 className="relative w-[110px] sm:w-[130px] md:w-[145px] aspect-[1/3.2]"
-                style={{
-                  transform: `rotate(${strip.rotate})`,
-                }}
+                style={{ transform: `rotate(${strip.rotate})` }}
               >
                 <Image
                   src={strip.src}
