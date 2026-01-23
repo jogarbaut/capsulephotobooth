@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react"
 import { COMPANY_INFO } from "@/app/constants"
+import { Phone, Mail, MapPin } from "lucide-react"
 
 type FormState = "idle" | "submitting" | "success" | "error"
 
@@ -143,7 +144,7 @@ export default function Contact() {
               Check Availability + Get a Quote
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Tell us a bit about your event and we’ll follow up with
+              Tell us a bit about your event and we will follow up with
               availability, package options, and next steps.
             </p>
           </div>
@@ -159,7 +160,7 @@ export default function Contact() {
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">📞</span>
+                      <Phone className="h-6 w-6 text-secondary" />
                     </div>
                     <div>
                       <div className="font-semibold text-gray-800">Phone</div>
@@ -174,7 +175,7 @@ export default function Contact() {
 
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">✉️</span>
+                      <Mail className="h-6 w-6 text-secondary" />
                     </div>
                     <div>
                       <div className="font-semibold text-gray-800">Email</div>
@@ -189,7 +190,7 @@ export default function Contact() {
 
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center shrink-0">
-                      <span className="text-2xl">📍</span>
+                      <MapPin className="h-6 w-6 text-secondary" />
                     </div>
                     <div>
                       <div className="font-semibold text-gray-800">
@@ -384,7 +385,7 @@ export default function Contact() {
 
                 {formState === "success" ? (
                   <p className="text-sm text-green-700 font-semibold">
-                    ✓ Request sent! We’ll get back to you soon.
+                    ✓ Request sent! We will get back to you soon.
                   </p>
                 ) : null}
 

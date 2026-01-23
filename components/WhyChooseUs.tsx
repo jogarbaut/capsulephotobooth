@@ -1,45 +1,62 @@
 "use client"
 
-import { COMPANY_INFO } from "@/app/constants"
+import {
+  Palette,
+  ClipboardCheck,
+  Users,
+  Hammer,
+  MessageSquare,
+  Sparkles,
+  Quote,
+} from "lucide-react"
 
 export const benefits = [
   {
     title: "Personalized Design & Experience",
     description:
       "Custom print templates, thoughtful revisions, and styling details tailored to your event vision.",
-    icon: "🎨",
+    icon: "Palette",
   },
   {
     title: "Pre-Event Planning & Coordination",
     description:
       "A dedicated coordination call to align on flow, timing, guest etiquette, and special requests.",
-    icon: "📋",
+    icon: "ClipboardCheck",
   },
   {
     title: "Engaging On-Site Attendant",
     description:
       "A friendly, professional attendant who interacts with guests and encourages participation.",
-    icon: "🙋‍♀️",
+    icon: "Users",
   },
   {
     title: "Complimentary Setup & Breakdown",
     description:
       "Seamless setup and teardown handled entirely by our team so you can stay focused on your event.",
-    icon: "🛠️",
+    icon: "Hammer",
   },
   {
     title: "Flexible, Transparent Pricing",
     description:
       "Thoughtful packages and pricing flexibility designed to fit your needs - we don't want cost to be the barrier.",
-    icon: "💬",
+    icon: "MessageSquare",
   },
   {
     title: "Hospitality-First Experience",
     description:
       "We're known for how well we connect with guests—bringing warmth, energy, and a special touch.",
-    icon: "✨",
+    icon: "Sparkles",
   },
 ]
+
+const iconMap: Record<string, React.ElementType> = {
+  Palette,
+  ClipboardCheck,
+  Users,
+  Hammer,
+  MessageSquare,
+  Sparkles,
+}
 
 export default function WhyChooseUs() {
   return (
@@ -58,24 +75,31 @@ export default function WhyChooseUs() {
 
         {/* Benefits Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="group relative bg-linear-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200 hover:border-secondary transition-all duration-300 hover:shadow-xl"
-            >
-              <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {benefits.map((benefit, index) => {
+            const Icon = iconMap[benefit.icon]
+            return (
+              <div
+                key={index}
+                className="group relative bg-linear-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-200 hover:border-secondary transition-all duration-300 hover:shadow-xl"
+              >
+                <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-              <div className="text-5xl mb-4">{benefit.icon}</div>
+                <div className="mb-5">
+                  {Icon && (
+                    <Icon className="h-12 w-12 text-secondary transition-transform duration-300 group-hover:scale-110" />
+                  )}
+                </div>
 
-              <h3 className="text-xl font-bold text-primary-dark mb-3">
-                {benefit.title}
-              </h3>
+                <h3 className="text-xl font-bold text-primary-dark mb-3">
+                  {benefit.title}
+                </h3>
 
-              <p className="text-gray-600 leading-relaxed">
-                {benefit.description}
-              </p>
-            </div>
-          ))}
+                <p className="text-gray-600 leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+            )
+          })}
         </div>
 
         {/* Testimonial Placeholder */}
@@ -84,7 +108,6 @@ export default function WhyChooseUs() {
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
 
           <div className="relative z-10 max-w-4xl mx-auto text-center">
-            <div className="text-6xl mb-6">💬</div>
             <h3 className="text-3xl font-bold mb-6">Testimonial</h3>
             <p className="text-xl leading-relaxed mb-6 opacity-90">
               "We would recommend them to anyone and will be having them back

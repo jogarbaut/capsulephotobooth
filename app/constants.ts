@@ -24,25 +24,25 @@ export const SERVICES = [
     title: "Weddings",
     description:
       "Capture unforgettable moments with an elegant photo booth experience your guests will love.",
-    icon: "💍",
+    icon: "Heart",
   },
   {
     title: "Birthdays",
     description:
       "Fun, high-energy photo booth setups perfect for milestone birthdays and celebrations.",
-    icon: "🎉",
+    icon: "PartyPopper",
   },
   {
     title: "Corporate",
     description:
       "Professional photo booth experiences for brand activations, parties, and company events.",
-    icon: "🏢",
+    icon: "Briefcase",
   },
   {
     title: "Any Celebration",
     description:
       "From graduations to engagement parties to baby showers, we can bring the photo booth to any event.",
-    icon: "✨",
+    icon: "Sparkles",
   },
 ]
 

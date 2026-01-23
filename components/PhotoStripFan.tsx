@@ -57,7 +57,7 @@ export default function PhotoStripFan() {
               style={{ animationDelay: `${strip.delayMs}ms` }}
             >
               <div
-                className="relative w-[110px] sm:w-[130px] md:w-[145px] aspect-[1/3.2]"
+                className="relative w-27.5:w-[130px] md:w-36.25 aspect-[1/3.2]"
                 style={{ transform: `rotate(${strip.rotate})` }}
               >
                 <Image

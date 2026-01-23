@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-30 overflow-hidden"
     >
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-secondary/10 to-primary/5"></div>
