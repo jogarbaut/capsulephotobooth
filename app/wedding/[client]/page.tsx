@@ -34,7 +34,7 @@ export default async function WeddingClientPricingPage({
 
   return (
     <main className="bg-white">
-      <section className="section-padding bg-white">
+      <section className="section-padding pt-20 bg-white">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
