@@ -94,7 +94,7 @@ export default function WeddingsSection() {
             {/* CTA */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
-                href="/contact"
+                href="#contact"
                 className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 font-semibold text-white shadow-sm transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-primary/30"
               >
                 Inquire for a Wedding June 2026+
