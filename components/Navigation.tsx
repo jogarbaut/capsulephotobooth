@@ -2,20 +2,49 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import { usePathname, useRouter } from "next/navigation"
 import { COMPANY_INFO, NAV_ITEMS } from "@/app/constants"
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
+  const pathname = usePathname()
+  const router = useRouter()
+  const isHome = pathname === "/"
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const getHref = (href: string) => {
+    if (!href.startsWith("#")) return href
+    return isHome ? href : `/${href}` // "/#services" etc
+  }
+
+  const handleNavClick = (href: string) => (e: React.MouseEvent) => {
+    // Only intercept hash links
+    if (!href.startsWith("#")) return
+
+    e.preventDefault()
+
+    const id = href.replace("#", "")
+
+    if (isHome) {
+      // Smooth-scroll on the home page without refresh
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    } else {
+      // From /wedding/[name], route to home + anchor
+      router.push(`/#${id}`)
+    }
+
+    setIsMobileMenuOpen(false)
+  }
 
   return (
     <nav
@@ -28,7 +57,11 @@ export default function Navigation() {
       <div className="container-custom">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <a href="#home" className="flex items-center space-x-3 group">
+          <a
+            href={getHref("#home")}
+            onClick={handleNavClick("#home")}
+            className="flex items-center space-x-3 group"
+          >
             <div className="relative w-12 h-12 transition-transform duration-300 group-hover:scale-110">
               <Image
                 src="/logo.png"
@@ -50,14 +83,20 @@ export default function Navigation() {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={getHref(item.href)}
+                onClick={handleNavClick(item.href)}
                 className="text-gray-700 hover:text-primary font-medium transition-colors duration-300 relative group"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <a href="#contact" className="btn-primary">
+
+            <a
+              href={getHref("#contact")}
+              onClick={handleNavClick("#contact")}
+              className="btn-primary"
+            >
               Book Now
             </a>
           </div>
@@ -98,17 +137,18 @@ export default function Navigation() {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={getHref(item.href)}
+                onClick={handleNavClick(item.href)}
                 className="text-gray-700 hover:text-primary font-medium transition-colors duration-300 py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
+
             <a
-              href="#contact"
+              href={getHref("#contact")}
+              onClick={handleNavClick("#contact")}
               className="btn-primary text-center"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               Book Now
             </a>
