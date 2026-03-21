@@ -26,7 +26,7 @@ export default function Services() {
             Photo Booth Services for Every Occasion
           </h2>
           <p className="text-gray-600 text-lg">
-            We offer a wide range rental packages tailored to meet your unique
+            We offer a wide range of rental packages tailored to meet your unique
             vision.
           </p>
         </div>

@@ -2,7 +2,7 @@ export const COMPANY_INFO = {
   name: "Capsule Photo Booth, LLC",
   shortName: "CPB",
   tagline:
-    "Captuing the moments, capsuling the memories all over Northern California",
+    "Capturing the moments, capsuling the memories all over Northern California",
   phone: "(408) 799-8118",
   email: "capsulephotobooth@gmail.com",
   address: {

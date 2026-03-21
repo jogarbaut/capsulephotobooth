@@ -7,7 +7,6 @@ import {
   Hammer,
   MessageSquare,
   Sparkles,
-  Quote,
 } from "lucide-react"
 
 export const benefits = [
@@ -111,7 +110,7 @@ export default function WhyChooseUs() {
             <h3 className="text-3xl font-bold mb-6">Testimonial</h3>
             <p className="text-xl leading-relaxed mb-6 opacity-90">
               "We would recommend them to anyone and will be having them back
-              soon. If you're thinking of booking them I'd say do it. That add
+              soon. If you're thinking of booking them I'd say do it. They add
               an element of excitement and community that cannot be duplicated
               without a true passion in what they do."
             </p>
