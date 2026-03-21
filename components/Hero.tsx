@@ -34,8 +34,8 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#weddings" className="btn-primary text-center">
-                Have a June 2026+ Wedding?
+              <a href="/wedding" className="btn-primary text-center">
+                Wedding Photo Booth
               </a>
               <a
                 href="#contact"

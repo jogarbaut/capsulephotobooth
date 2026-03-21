@@ -49,6 +49,7 @@ export const SERVICES = [
 // Navigation items
 export const NAV_ITEMS = [
   { label: "Home", href: "#home" },
+  { label: "Weddings", href: "/wedding" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Why Choose Us", href: "#why-choose-us" },

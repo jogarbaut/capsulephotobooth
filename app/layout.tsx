@@ -3,7 +3,6 @@ import { Inter, Montserrat } from "next/font/google"
 import "./globals.css"
 import { COMPANY_INFO } from "./constants"
 
-// ✅ adjust these import paths to match your project
 import Navbar from "@/components/Navigation"
 import Footer from "@/components/Footer"
 
@@ -18,11 +17,48 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800"],
 })
 
+// Update NEXT_PUBLIC_SITE_URL in .env.local with your production domain
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://capsulephotobooth.com"
+
 export const metadata: Metadata = {
-  title: `${COMPANY_INFO.name} - ${COMPANY_INFO.tagline}`,
-  description: `${COMPANY_INFO.name} connects healthcare professionals with premier opportunities nationwide. Specializing in travel nursing, per diem staffing, and permanent placements.`,
-  keywords:
-    "healthcare staffing, travel nursing, per diem nursing, permanent placement, allied health staffing",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${COMPANY_INFO.name} | Photo Booth Rental in Northern California`,
+    template: `%s | ${COMPANY_INFO.shortName}`,
+  },
+  description:
+    "Capsule Photo Booth offers professional photo booth rentals throughout Northern California. Choose our modern white booth or vintage oak wooden booth for weddings, birthdays, corporate events, and more.",
+  keywords: [
+    "photo booth rental",
+    "photo booth rental San Jose",
+    "wedding photo booth",
+    "Bay Area photo booth",
+    "Northern California photo booth",
+    "corporate photo booth rental",
+    "AAPI owned small business",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: COMPANY_INFO.name,
+    title: `${COMPANY_INFO.name} | Photo Booth Rental in Northern California`,
+    description:
+      "Professional photo booth rentals for weddings, birthdays, and corporate events throughout Northern California.",
+    images: [
+      {
+        url: "/new-photo-booth.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Capsule Photo Booth setup",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${COMPANY_INFO.name} | Photo Booth Rental in Northern California`,
+    description:
+      "Professional photo booth rentals for weddings, birthdays, and corporate events throughout Northern California.",
+    images: ["/new-photo-booth.jpeg"],
+  },
 }
 
 export default function RootLayout({

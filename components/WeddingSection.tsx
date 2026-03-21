@@ -1,113 +1,97 @@
-"use client"
-
 import Image from "next/image"
 
-export default function WeddingsSection() {
+const BOOTHS = [
+  {
+    badge: "Modern",
+    name: "Sleek White Booth",
+    description:
+      "A clean, contemporary setup that blends seamlessly into any venue. Minimal and polished — a great fit for modern aesthetics.",
+    image: "/about.png",
+    alt: "Modern white sleek photo booth",
+    features: [
+      "Sleek white enclosure with a modern finish",
+      "Professional DSLR camera for sharp, vivid photos",
+      "Custom print templates to match your theme",
+      "Instant prints and digital gallery sharing",
+    ],
+  },
+  {
+    badge: "Vintage",
+    name: "Oak Wooden Booth",
+    description:
+      "A handcrafted wooden enclosure with a warm, vintage feel. Elegant and timeless — a natural fit for weddings and upscale events.",
+    image: "/new-photo-booth.jpeg",
+    alt: "Vintage oak wooden photo booth",
+    features: [
+      "Vintage-inspired oak enclosure with added display monitors",
+      "Professional DSLR camera for gallery-quality photos",
+      "Premium ring lighting for crisp photos in any venue",
+      "Professional-grade printer for fast, extra-crisp prints",
+    ],
+  },
+]
+
+export default function BoothsSection() {
   return (
-    <section id="weddings" className="py-16 sm:py-20">
+    <section id="booths" className="py-16 sm:py-20">
       <div className="container-custom">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          {/* Image */}
-          <div className="relative overflow-hidden rounded-3xl shadow-lg">
-            <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-secondary/10 to-transparent" />
-            <Image
-              src="/new-photo-booth.jpeg"
-              alt="Our upgraded wedding photo booth setup"
-              width={1200}
-              height={900}
-              className="h-80 w-full object-cover sm:h-105 lg:h-130"
-              priority={false}
-            />
-          </div>
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-secondary font-semibold text-sm uppercase tracking-wider">
+            Our Booths
+          </span>
+          <h2 className="heading-2 mt-4">Two Styles, One Great Experience</h2>
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            Every event has its own aesthetic. Choose the booth that fits yours
+            — both deliver the same professional quality and service.
+          </p>
+        </div>
 
-          {/* Content */}
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/60 px-4 py-2 text-sm backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-primary" />
-              <span className="font-medium text-foreground/90">
-                Now booking weddings:{" "}
-                <span className="text-primary">June 2026+</span>
-              </span>
+        <div className="grid gap-8 lg:grid-cols-2">
+          {BOOTHS.map((booth) => (
+            <div
+              key={booth.badge}
+              className="rounded-3xl overflow-hidden shadow-lg bg-white border border-gray-100"
+            >
+              {/* Image */}
+              <div className="relative h-64 sm:h-80 overflow-hidden">
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent z-10" />
+                <Image
+                  src={booth.image}
+                  alt={booth.alt}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <span className="absolute top-4 left-4 z-20 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-primary-dark backdrop-blur">
+                  {booth.badge}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 space-y-4">
+                <h3 className="text-xl font-bold text-gray-900">{booth.name}</h3>
+                <p className="text-gray-600 leading-relaxed">{booth.description}</p>
+                <ul className="space-y-2">
+                  {booth.features.map((f, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary" />
+                      <span className="text-gray-700 text-sm">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
+          ))}
+        </div>
 
-            <div className="space-y-3">
-              <h2 className="font-montserrat text-3xl font-bold tracking-tight sm:text-4xl">
-                Elevating Our Wedding Photo Booth Experience
-              </h2>
-              <p className="text-base leading-relaxed text-foreground/80 sm:text-lg">
-                2025 was good but we want to take it to the next level. Our
-                upgraded wedding service is designed to feel elevated, polished,
-                and effortless for you and your guests.
-              </p>
-            </div>
-
-            {/* Feature bullets */}
-            <ul className="space-y-3">
-              <li className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary" />
-                <p className="text-foreground/85">
-                  <span className="font-semibold text-foreground">
-                    Vintage-inspired wooden oak booth
-                  </span>{" "}
-                  with an additional monitors for better, more visually
-                  appealing setup.
-                </p>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary" />
-                <p className="text-foreground/85">
-                  <span className="font-semibold text-foreground">
-                    Higher-quality photos
-                  </span>{" "}
-                  through a new professional camera setup.
-                </p>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary" />
-                <p className="text-foreground/85">
-                  <span className="font-semibold text-foreground">
-                    Better lighting
-                  </span>{" "}
-                  for crisp photos in any venue.
-                </p>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary" />
-                <p className="text-foreground/85">
-                  <span className="font-semibold text-foreground">
-                    New professional printer
-                  </span>{" "}
-                  for extra-crisp and faster prints.
-                </p>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary" />
-                <p className="text-foreground/85">
-                  <span className="font-semibold text-foreground">
-                    New photo booth software
-                  </span>{" "}
-                  to allow for more capturing modes and gallery display.
-                </p>
-              </li>
-            </ul>
-
-            {/* CTA */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 font-semibold text-white shadow-sm transition hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-primary/30"
-              >
-                Inquire for a Wedding June 2026+
-              </a>
-            </div>
-
-            {/* Small note */}
-            <p className="text-sm text-foreground/70">
-              June 2026 dates are filling early. If you already have a venue +
-              date, send them over and we will confirm availability fast. We
-              will still be offering our current booth for events before then.
-            </p>
-          </div>
+        <div className="mt-10 text-center">
+          <p className="text-gray-600 mb-6">
+            Not sure which booth fits your event? We&apos;re happy to help you
+            decide.
+          </p>
+          <a href="#contact" className="btn-primary">
+            Talk to Us
+          </a>
         </div>
       </div>
     </section>

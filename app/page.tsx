@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation"
 import Hero from "@/components/Hero"
 import About from "@/components/About"
 import Services from "@/components/Services"
@@ -9,7 +8,6 @@ import WeddingsSection from "@/components/WeddingSection"
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navigation />
       <Hero />
       <WeddingsSection />
       <About />

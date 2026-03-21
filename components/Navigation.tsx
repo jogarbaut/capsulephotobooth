@@ -80,17 +80,26 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={getHref(item.href)}
-                onClick={handleNavClick(item.href)}
-                className="text-gray-700 hover:text-primary font-medium transition-colors duration-300 relative group"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const isActive = !item.href.startsWith("#") && pathname === item.href
+              return (
+                <a
+                  key={item.href}
+                  href={getHref(item.href)}
+                  onClick={handleNavClick(item.href)}
+                  className={`font-medium transition-colors duration-300 relative group ${
+                    isActive ? "text-primary" : "text-gray-700 hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  ></span>
+                </a>
+              )
+            })}
 
             <a
               href={getHref("#contact")}
@@ -134,16 +143,21 @@ export default function Navigation() {
           }`}
         >
           <div className="flex flex-col space-y-4 py-4">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={getHref(item.href)}
-                onClick={handleNavClick(item.href)}
-                className="text-gray-700 hover:text-primary font-medium transition-colors duration-300 py-2"
-              >
-                {item.label}
-              </a>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const isActive = !item.href.startsWith("#") && pathname === item.href
+              return (
+                <a
+                  key={item.href}
+                  href={getHref(item.href)}
+                  onClick={handleNavClick(item.href)}
+                  className={`font-medium transition-colors duration-300 py-2 ${
+                    isActive ? "text-primary" : "text-gray-700 hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              )
+            })}
 
             <a
               href={getHref("#contact")}

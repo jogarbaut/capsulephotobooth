@@ -66,9 +66,9 @@ export default async function WeddingClientPricingPage({
                   options to suit your special day.
                 </p>
                 <p>
-                  All packages feature our DSLR powered photo booth and vintage
-                  wooden enclosure, ensuring high-quality photos and a stylish
-                  setup that complements any wedding theme.
+                  All packages include your choice of our sleek modern white
+                  booth or our vintage oak wooden booth — both DSLR-powered
+                  and designed to complement any wedding aesthetic.
                 </p>
                 <p>
                   We are happy to customize a package to fit your specific
